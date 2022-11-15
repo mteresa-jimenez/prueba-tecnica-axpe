@@ -16,19 +16,19 @@ function App() {
   const handleScroll = () => {
     const positionY = window.scrollY;
 
-    if(positionY < scrollY) { 
-      setShow(true)
+    if (positionY < scrollY) {
+      setShow(true);
     } else {
-      setShow(false)
+      setShow(false);
     }
 
     setScrollY(positionY);
-  }
+  };
 
-  useEffect( () => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll)
-})
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  });
 
   function getCurrentPageComponent() {
     let currentPageComponent = <AllMeetupsPage />;
