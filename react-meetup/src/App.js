@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import AllMeetupsPage from "./pages/AllMeetupsPage";
 import FavoritesPage from "./pages/Favorites";
@@ -10,6 +10,25 @@ import Layout from "./components/layout/Layout";
 
 function App() {
   const [page, setPage] = useState(ALL_MEETUP_PAGE);
+  const [show, setShow] = useState(true);
+  const [scrollY, setScrollY] = useState(0);
+
+  const handleScroll = () => {
+    const positionY = window.scrollY;
+
+    if(positionY < scrollY) { 
+      setShow(true)
+    } else {
+      setShow(false)
+    }
+
+    setScrollY(positionY);
+  }
+
+  useEffect( () => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll)
+})
 
   function getCurrentPageComponent() {
     let currentPageComponent = <AllMeetupsPage />;
@@ -29,7 +48,7 @@ function App() {
 
   return (
     <div data-test="app">
-      <MainNavigation setPage={setPage} />
+      {show && <MainNavigation setPage={setPage} />}
       <Layout>{getCurrentPageComponent()}</Layout>
     </div>
   );
