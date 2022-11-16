@@ -1,7 +1,19 @@
 import classes from "./MeetupItem.module.css";
 import Card from "../ui/Card";
 
-export default function MeetupItem({ item }) {
+export default function MeetupItem({ item, favorites, setFavorites }) {
+
+  function addFavorites() {
+    if (favorites.includes(item)){
+      const newFavorites = favorites.filter(
+        (favorite) => favorite.id !== item.id
+      );
+      return setFavorites(newFavorites);
+    } else {
+      setFavorites([...favorites, item]);
+    }
+  }
+
   return (
       <Card >
         <div className={classes.image}>
@@ -13,7 +25,7 @@ export default function MeetupItem({ item }) {
           <p>{item.description}</p>
         </div>
         <div className={classes.actions}>
-          <button>Add to favorites</button>
+          <button id={item.id} onClick={addFavorites}>Add to favorites</button>
         </div>
       </Card>
   );

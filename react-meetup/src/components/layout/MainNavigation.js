@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import classes from "./MainNavigation.module.css";
 
-export default function MainNavigation({ setPage }) {
+export default function MainNavigation({ favorites }) {
   return (
     <header className={classes.header} data-test="navigation-header">
       <div className={classes.logo}>React Meetups</div>
@@ -22,7 +22,7 @@ export default function MainNavigation({ setPage }) {
           <li>
             <Link to="/favorites">
               My Favorites
-              <span className={classes.badge}>{0}</span>
+              <span className={classes.badge}>{favorites.length}</span>
             </Link>
           </li>
         </ul>

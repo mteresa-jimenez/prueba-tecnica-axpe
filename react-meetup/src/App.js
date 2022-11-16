@@ -12,6 +12,7 @@ import Layout from "./components/layout/Layout";
 function App() {
   const [show, setShow] = useState(true);
   const [scrollY, setScrollY] = useState(0);
+  const [favorites, setFavorites] = useState([]);
 
   const handleScroll = () => {
     const positionY = window.scrollY;
@@ -31,16 +32,16 @@ function App() {
   });
 
   return (
-    <div data-test="app">
-      {show && <MainNavigation />}
-      <Layout>
-        <Routes>
-          <Route path="/" element={<AllMeetupsPage />} />
-          <Route path="/favorites" element={<FavoritesPage />} />
-          <Route path="/new" element={<NewMeetupsPage />} />
-        </Routes>
-      </Layout>
-    </div>
+      <div data-test="app">
+        {show && <MainNavigation favorites={favorites} />}
+        <Layout>
+          <Routes>
+            <Route path="/" element={<AllMeetupsPage favorites={favorites} setFavorites={setFavorites}/>} />
+            <Route path="/favorites" element={<FavoritesPage favorites={favorites} setFavorites={setFavorites}/> } />
+            <Route path="/new" element={<NewMeetupsPage />} />
+          </Routes>
+        </Layout>
+      </div>
   );
 }
 
