@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 
 import AllMeetupsPage from "./pages/AllMeetupsPage";
 import FavoritesPage from "./pages/Favorites";
@@ -48,8 +49,14 @@ function App() {
 
   return (
     <div data-test="app">
-      {show && <MainNavigation setPage={setPage} />}
-      <Layout>{getCurrentPageComponent()}</Layout>
+      {show && <MainNavigation />}
+      <Layout>
+        <Routes>
+          <Route path="/" element={<AllMeetupsPage />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="/new" element={<NewMeetupsPage />} />
+        </Routes>
+      </Layout>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { ALL_MEETUP_PAGE, FAVORITES_PAGE, NEW_MEETUP_PAGE } from "./../../utils/constants";
+import { Link } from "react-router-dom";
 
 import classes from "./MainNavigation.module.css";
 
@@ -9,21 +9,21 @@ export default function MainNavigation({ setPage }) {
       <nav>
         <ul>
           <li>
-            <a href="#" onClick={() => setPage(ALL_MEETUP_PAGE)}>
+            <Link to="/">
               All Meetups
-            </a>
+            </Link>
           </li>
 
           <li>
-            <a href="#" onClick={() => setPage(NEW_MEETUP_PAGE)}>
+            <Link to="/new">
               Add New Meetup
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" onClick={() => setPage(FAVORITES_PAGE)}>
+            <Link to="/favorites">
               My Favorites
               <span className={classes.badge}>{0}</span>
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
