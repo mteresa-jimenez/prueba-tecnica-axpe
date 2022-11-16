@@ -7,10 +7,7 @@ export default function AllMeetupsPage() {
     <section>
       <h1>All Meetups</h1>
       <ul className={classes.list}>
-        <MeetupItem />
-        <MeetupItem />
-        <MeetupItem />
-        <MeetupItem />
+        <MeetupList data={data} />
       </ul>
     </section>
   );
