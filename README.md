@@ -9,20 +9,20 @@ La prueba consiste en dos ejercicios. El primero es una parte teórica, cuya sol
 
 ## Ejercicio 2
 
-*Como ejecutar el proyecto*
+**Como ejecutar el proyecto**
 
-### `npm install`
+`npm install`
 
 Si es la primera vez que inicias el proyecto, antes de nada debes instalar las dependencias.
 
-### `npm start`
+`npm start`
 
 Ejecuta la aplicación en modo de desarrollo.\
 Abre [http://localhost:3000](http://localhost:3000) en el navegador.
 
 
 
-> **DESARROLLO:**
+### DESARROLLO:
 
 - **Se quiere que cuando hacemos scroll down, este tiene que desaparecer y cuando hacemos scroll up tiene que volver a aparecer en la posición de la página dónde te encuentres.** 
 
