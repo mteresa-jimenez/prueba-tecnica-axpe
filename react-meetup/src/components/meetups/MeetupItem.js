@@ -3,7 +3,7 @@ import Card from "../ui/Card";
 
 export default function MeetupItem({ item, favorites, setFavorites }) {
 
-  function addFavorites() {
+  function handleFavorites() {
     if (favorites.includes(item)){
       const newFavorites = favorites.filter(
         (favorite) => favorite.id !== item.id
@@ -25,7 +25,7 @@ export default function MeetupItem({ item, favorites, setFavorites }) {
           <p>{item.description}</p>
         </div>
         <div className={classes.actions}>
-          <button id={item.id} onClick={addFavorites}>Add to favorites</button>
+          <button id={item.id} onClick={handleFavorites}>Add to favorites</button>
         </div>
       </Card>
   );
