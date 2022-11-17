@@ -20,6 +20,8 @@ Si es la primera vez que inicias el proyecto, antes de nada debes instalar las d
 Ejecuta la aplicación en modo de desarrollo.\
 Abre [http://localhost:3000](http://localhost:3000) en el navegador.
 
+
+
 > **DESARROLLO:**
 
 - **Se quiere que cuando hacemos scroll down, este tiene que desaparecer y cuando hacemos scroll up tiene que volver a aparecer en la posición de la página dónde te encuentres.** 
