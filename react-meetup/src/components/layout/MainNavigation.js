@@ -4,7 +4,7 @@ import classes from "./MainNavigation.module.css";
 
 export default function MainNavigation({ favorites }) {
   return (
-    <header className={classes.header} data-test="navigation-header">
+    <header className={classes.header} data-testid="navigation-header">
       <div className={classes.logo}>React Meetups</div>
       <nav>
         <ul>

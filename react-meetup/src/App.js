@@ -32,7 +32,7 @@ function App() {
   });
 
   return (
-      <div data-test="app">
+      <div data-testid="app">
         {show && <MainNavigation favorites={favorites} />}
         <Layout>
           <Routes>

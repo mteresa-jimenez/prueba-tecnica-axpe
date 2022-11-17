@@ -1,6 +1,9 @@
 /* eslint-disable testing-library/await-async-query */
 /* eslint-disable testing-library/no-debugging-utils */
 import { shallow, mount } from "enzyme";
+import { render, fireEvent, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
+import {BrowserRouter } from 'react-router-dom'
 import App from "./App";
 import MainNavigation from "./components/layout/MainNavigation";
 import Layout from "./components/layout/Layout";
@@ -28,3 +31,11 @@ test("renders the Layout component", () => {
   const wrapper = setup();
   expect(wrapper.find(Layout).length).toBe(1);
 });
+
+// test("scrolling makes the header appear or dissapear", async () => {
+//   render(<App />, { wrapper: BrowserRouter });
+//   const header = screen.getByTestId("navigation-header");
+//   const container = screen.getByTestId("app");
+//   fireEvent.scroll(container, { target: { scrollY: 150 } });
+//   expect(header).toBeFalsy();
+// });
