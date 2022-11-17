@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Prueba técnica para Axpe
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyecto es una prueba técnica para el proceso de selección con Axpe.
 
-## Available Scripts
+La prueba consiste en dos ejercicios. El primero es una parte teórica, cuya solución encontraremos en este mismo archivo README. Y el segundo, se trata de un proyecto desarrollado con React, JavaScript y HTML/CSS.
 
-In the project directory, you can run:
+## Ejercicio 1
+
+
+## Ejercicio 2
+
+*Como ejecutar el proyecto*
+
+### `npm install`
+
+Si es la primera vez que inicias el proyecto, antes de nada debes instalar las dependencias.
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Ejecuta la aplicación en modo de desarrollo.\
+Abre [http://localhost:3000](http://localhost:3000) en el navegador.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+> **DESARROLLO:**
 
-### `npm test`
+- *Se quiere que cuando hacemos scroll down, este tiene que desaparecer y cuando hacemos scroll up tiene que volver a aparecer en la posición de la página dónde te encuentres.*
+Primero de todo, para que header aparezca en la posición que nos encontramos, debemos fijarlo con la propiedad de CSS `position: fixed`.
+Después, para hacerlo aparecer y desaparecer, necesitamos hacer una condición usando el hook `useState`: si la posición o el punto vertical donde nos encontramos en la ventana al hacer scroll es menor a la del header, este último se mostrará. He considerado varias maneras de hacerlo: añadiendo o quitando una clase con una propiedad de CSS que no muestre la cabecera (tal vez `display: blocked` o `visibility: hidden`) o con la variable `show`, que es boolean. He optado por esta última opción por simplicidad, pero consideraría porque tal vez es más fácil de testear.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+- *Desde el header se puede navegar a las distintas páginas, pero por temas de SEO se requiere que esta navegación se vea reflejada en la url.*
+Para ello, he usado React Router. He implementado la última version, React Router v6, que cambia ligeramente con la versión anterior a la hora de implementarla para este caso. He creado dos rutas, `/favorites` y `/new`, además de la que se da por defecto y he asignado a la página donde aparecen todos los "Meetup".
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- *El botón de añadir a favoritos no está funcionando. Implementa la lógica para añadir y quitar de favoritos.*
+Antes de nada, he creado un componente para hacer una lista de "Meetup" para poder reutilizarlo tanto en la página principal como en la de favoritos. Este componente tiene una función añade y elimina elementos al array dependiendo de si ya los contiene o no. Este array de favoritos se pasa por props desde el componente App a los distintos componentes que lo necesitan. Además, he cambiado el header donde indica el número de elementos que se han marcado como favoritos.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- *Implementación de algún test.*
+Tras los cambios hechos anteriormente, he tenido que arreglar algún test que ya existía porque daba error.
+Lo primero que he intentado hacer es un test que detecte si el botón de añadir favoritos, añadía o eliminaba elementos al array. Para ello he probado tanto "enzyme" (que nunca lo había usado) como "Jest". Primero, he simulado un click con "enzyme" y esperaba que el array de favoritos contuviese el elemento que pasaba por props, pero no funcionaba. He cambiado la función donde se encuentra el componente original (`<MeetupList />`) donde el botón, además, añadía una clase "test-button" para testear si el elemento contiene la clase. La prueba funcionaba en el navegador, pero tampoco conseguía pasar el test. He probado seleccionando el elemento botón tanto con "Jest" como con "enzyme" para inspeccionarlo, pero no he solucionado nada. Finalmente, por tiempo, he optado por un test más sencillo que compruebe que cuando clicamos en el botón, se llama a la función.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Después, he probado a testear que el navegador aparece y desaparece cuando hacemos scroll en la página, pero tampoco me ha funcionado el evento scroll. El punto horizontal de la pantalla era el mismo (0), tanto antes como después del evento. He borrado este test por claridad del código, pero se puede ver lo que he hecho en este commit: https://github.com/mteresa-jimenez/prueba-tecnica-axpe/commit/4bfa4e360b5d1ec8a1d94c7e2b073b2d9737f88e
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
